@@ -14,33 +14,33 @@
 }
 
 body {
+	background: white;
+	flex-flow: row wrap;
+	overflow: hidden;
+	color: white;
+	height: 100svh;
 	display: flex;
 	width: 100svw;
-	height: 100svh;
-	overflow: hidden;
-	flex-flow: row wrap;
-	background: white;
-	color: white;
 }
 
 aside {
-	width: var(--asideWidth);
-	height: 100%;
-	background: orangered;
 	border-left: solid black 1px;
+	width: var(--asideWidth);
+	background: orangered;
+	height: 100%;
 }
 
 main {
 	width: calc(100% - var(--asideWidth));
-	height: 100%;
 	overflow: auto;
+	height: 100%;
 }
 
 main > div {
-	display: flex;
 	flex-flow: row nowrap;
 	padding: 5px 5px;
 	font-size: 150%;
+	display: flex;
 }
 
 main > :not(:first-child) {
@@ -49,8 +49,8 @@ main > :not(:first-child) {
 
 main > div > p,
 main > div > strong {
-	flex: 1;
 	text-align: center;
+	flex: 1;
 }
 
 main > :nth-child(odd) {
@@ -68,33 +68,54 @@ main > :nth-last-child(1) {
 }
 
 footer {
-	width: 100%;
 	position: absolute;
+	width: 100%;
 	bottom: 0;
-	height: var(--footerHeight);
-	background: black;
-	display: flex;
-	flex-flow: row nowrap;
 }
 
 footer > * {
-	height: 100%;
 	font-size: 200%;
+	height: 50%;
+	width: 100%;
+}
+
+footer .Buttons {
+	padding-right: calc(var(--asideWidth) + 1svw);
+	justify-content: flex-end;
+	margin-bottom: 1svw;
+	display: flex;
+	gap: 1svw;
+}
+
+footer .Buttons button {
+	outline: transparent;
+	background: black;
+	padding: .5svh 1svw;
+	color: white;
+	border: none;
+	cursor: grab;
+}
+
+footer .Credits {
+	flex-flow: row nowrap;
+	background: black;
+	font-size: 100%;
+	display: flex;
 }
 
 .Name {
-	padding: 0 2svw;
 	width: calc(100% - var(--asideWidth));
 	border-top: solid black 1px;
+	padding: 0 2svw;
 }
 
 .Guy {
-	flex: 1;
-	background: white;
-	color: black;
-	text-align: center;
-	border-top: solid black 1px;
 	border-left: solid black 1px;
+	border-top: solid black 1px;
+	background: white;
+	text-align: center;
+	color: black;
+	flex: 1;
 }
 
 .Highlight {

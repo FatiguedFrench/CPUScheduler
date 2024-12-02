@@ -4,7 +4,6 @@ const TableElement = document.getElementById("Table")
 class Rappresentazione {
 	admit() { this.target.style.opacity = `100%` }
 	return() {
-		this.target.style.opacity = `50%`
 		this.target.classList.add("Highlight")
 		this.target.style.color = "orangered"
 	}
