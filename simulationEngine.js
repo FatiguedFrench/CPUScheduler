@@ -1,44 +1,3 @@
-// Arrays
-const ActionHistory = new Array()
-const ToSimulate = new Array()
-const Returned = new Array()
-var JCB = new Array()
-var PCB = new Array()
-
-// Events
-const ProgramAdmittedEvent = new CustomEvent("ProgramAdmitted", { task: undefined })
-const TaskUpdatedEvent = new CustomEvent("TaskUpdated", { task: undefined })
-const TaskReturnEvent = new CustomEvent("TaskReturned", { task: undefined })
-const SimulationResetEvent = new Event("SimulationReset")
-const ClockAdvanceEvent = new Event("ClockAdvance")
-const ReadyEvent = new Event("SimulationReady")
-
-// Variables
-let clockTime = 0
-let targetTask = undefined // If a task is undefined, it returned
-let lastTaskExecuted = undefined
-let processNumber = 0
-
-// Proprieties of the Simulation
-const RoundRobinBurstWindow = 3
-const ContextSwitchTime = 0
-
-class Process {
-	constructor(ArrivalTime, BurstTime, Priority) {
-		this.contextSwitch = ContextSwitchTime
-		this.arrival = ArrivalTime || 0
-		this.priority = Priority || 1
-		this.burst = BurstTime || 0
-		this.number = processNumber++
-		
-		this.turnArround = 0
-		this.streak = 0
-		this.wait = 0
-
-		ToSimulate.push(this)
-	}
-}
-
 function CPU(TaskToProcess) {
 	/* The CPU function simulates, duh, a CPU: a task is passed
 	as the only paramenter, and it gets advanced through time */
@@ -215,5 +174,3 @@ new Process(3, 10, 0)
 new Process(0, 6, 2)
 new Process(6, 34, 1)
 new Process(9, 2, 4)
-
-setInterval(advanceClock, 1500)

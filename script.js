@@ -1,40 +1,8 @@
-var ProcessiSimulati = new Array()
-const TableElement = document.getElementById("Table")
+function addTaskToTable(Event) {
+	console.log(ToSimulate)
+	const Process = ToSimulate.at(-1)
 
-class Rappresentazione {
-	admit() { this.target.style.opacity = `100%` }
-	return() {
-		this.target.classList.add("Highlight")
-		this.target.style.color = "orangered"
-	}
-
-	constructor(Numero, ArivalTime, BurstTime) {
-		const Element = document.createElement("div")
-		const ProcessName = document.createElement("p")
-		const ArivalNumber = document.createElement("p")
-		const BurstNumber = document.createElement("p")
-		const WaitNumber = document.createElement("p")
-
-		ProcessName.innerText = `Processo ${Numero}`
-		ArivalNumber.innerText = ArivalTime
-		BurstNumber.innerText = BurstTime
-		WaitNumber.innerText = 0
-
-		Element.append(ProcessName)
-		Element.append(ArivalNumber)
-		Element.append(BurstNumber)
-		Element.append(WaitNumber)
-
-		TableElement.append(Element)
-
-		this.arival = ArivalNumber
-		this.burst = BurstNumber
-		this.name = ProcessName
-		this.wait = WaitNumber
-		this.target = Element
-
-		ProcessiSimulati.push(this)
-	}
+	new Rappresentazione(Process.number, Process.arrival, Process.burst)
 }
 
 function returnEvent(Event) {
@@ -66,16 +34,11 @@ function updateEvent(Event) {
 
 function advanceEvent(Event) {}
 
-function resetEvent(Event) {
-	ProcessiSimulati = new Array()
-
-	for (const Process of ToSimulate) {
-		new Rappresentazione(Process.number, Process.arrival, Process.burst)
-	}
-}
+function resetEvent(Event) {}
 
 window.addEventListener("ProgramAdmitted", admitionEvent)
 window.addEventListener("SimulationReset", resetEvent)
+window.addEventListener("TaskCreated", addTaskToTable)
 window.addEventListener("ClockAdvance", advanceEvent)
 window.addEventListener("TaskReturned", returnEvent)
 window.addEventListener("TaskUpdated", updateEvent)
