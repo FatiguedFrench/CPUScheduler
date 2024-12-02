@@ -97,12 +97,10 @@ footer > * {
 	border-left: solid black 1px;
 }
 
-#Date {
-	background: white;
-	color: black;
-	flex: 1;
-	border-left: solid black 1px;
-	border-right: solid black 1px;
-	border-top: solid black 1px;
-	text-align: center;
+.Highlight {
+	animation: Highlight 1s cubic-bezier(1, 0, 1, 1);
+}
+
+@keyframes Highlight {
+	from { color: orangered }
 }

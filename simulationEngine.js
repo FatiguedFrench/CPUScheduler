@@ -8,6 +8,7 @@ var PCB = new Array()
 // Events
 const ProgramAdmittedEvent = new CustomEvent("ProgramAdmitted", { task: undefined })
 const TaskUpdatedEvent = new CustomEvent("TaskUpdated", { task: undefined })
+const TaskReturnEvent = new CustomEvent("TaskReturned", { task: undefined })
 const SimulationResetEvent = new Event("SimulationReset")
 const ClockAdvanceEvent = new Event("ClockAdvance")
 const ReadyEvent = new Event("SimulationReady")
@@ -84,8 +85,8 @@ function returnTask(TaskToReturn) {
 	Returned.push(TaskToReturn)
 	targetTask = undefined
 
-	TaskUpdatedEvent.task = TaskToReturn
-	window.dispatchEvent(TaskUpdatedEvent)
+	TaskReturnEvent.task = TaskToReturn
+	window.dispatchEvent(TaskReturnEvent)
 }
 
 function jobScheduler() {
@@ -215,4 +216,4 @@ new Process(0, 6, 2)
 new Process(6, 34, 1)
 new Process(9, 2, 4)
 
-setInterval(advanceClock, 1000)
+setInterval(advanceClock, 1500)
